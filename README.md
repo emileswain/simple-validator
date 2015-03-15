@@ -5,6 +5,9 @@ Simple validator to test, log and or throw errors.
 
 ## Installation
 
+  npm install https://github.com/emileswain/validateargs/tarball/master --save
+
+  (haven't published yet)
   npm install ValidateArgs --save
 
 ## Usage
