@@ -124,14 +124,30 @@
                 standardTest(d);
                 return me;
             },
+            isObject:function () {
+                var d = mapArgs.apply(null,arguments);
+                d.type = 'object';
+                standardTest(d);
+                return me;
+            },
             isArray:function () {
                 var d = mapArgs.apply(null,arguments);
+                d.type = 'array';
                 if ( !Array.isArray(d.value)) {
                     failed = true;
                     processError(createError(d));
                 }
                 return me;
             },
+            isFunction:function () {
+                var d = mapArgs.apply(null,arguments);
+                d.type = 'function';
+                standardTest(d);
+                return me;
+            },
+
+
+
             throw:function ()
             {
                 if(failed)
