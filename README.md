@@ -1,13 +1,22 @@
-ValidateArgs
-============
+Validate Argument types.
+========================
 
+Validate parameters you pass into methods. Can log or throw errors. 
 
-Simple validator to test, log and or throw errors.
+Mostly written for the purpose of understanding npm, writing a module, functional programming, etc. There are lots of argument validators I could have used.
+
 
 ## Installation
 
+```
   npm install https://github.com/emileswain/validate-arg-types/tarball/master --save
   
+```
+
+```
+  npm install validate-arg-types --save
+  
+```
 
 ## Usage
 
