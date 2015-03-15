@@ -1,6 +1,6 @@
 {
   "name": "validate-arg-types",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Simple utlity to valid parameters. Configure to log or throw errors.",
   "main": "index.js",
   "scripts": {
