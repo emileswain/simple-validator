@@ -11,7 +11,7 @@ Simple validator to test, log and or throw errors.
 
 ## Usage
 ```
-  var ValidateArgs = require('validateargs');
+  var ValidateArgs = require('validate-arg-types');
   
   var validator = ValidateArgs('identifier');
   
