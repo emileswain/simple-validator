@@ -1,0 +1,22 @@
+{
+  "name": "ValidateArgs",
+  "version": "0.0.0",
+  "description": "Simple utlity to valid parameters. Configure to log or throw errors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emileswain/validateargs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Emile Swain emile.swain@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emileswain/validateargs/issues"
+  },
+  "homepage": "https://github.com/emileswain/validateargs"
+}
