@@ -79,4 +79,5 @@ For the purpose of experimentation, how to re-factor to add in <,>,= tests on pr
 
 ## Release History
 
+* 0.2.0 Adding functionality, docs.
 * 0.1.0 Initial release
