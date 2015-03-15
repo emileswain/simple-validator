@@ -6,9 +6,7 @@ Simple validator to test, log and or throw errors.
 
 ## Installation
 
-  npm install https://github.com/emileswain/simple-validator/tarball/master --save
-
-  Not sure if there are more Calculator apps or Argument validators. So I won't pollute npm.
+  npm install https://github.com/emileswain/validate-arg-types/tarball/master --save
   
 
 ## Usage
