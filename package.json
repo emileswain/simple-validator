@@ -1,7 +1,7 @@
 {
   "name": "validate-arg-types",
   "version": "1.0.1",
-  "description": "Simple utlity to valid parameters. Configure to log or throw errors.",
+  "description": "Validate types and values of properties. Throws or logs errors.",
   "main": "index.js",
   "scripts": {
     "test": "make test"
