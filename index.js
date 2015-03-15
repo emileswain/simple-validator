@@ -170,7 +170,6 @@
             },
 
 
-
             throw:function ()
             {
                 if(failed)

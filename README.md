@@ -10,22 +10,59 @@ Simple validator to test, log and or throw errors.
   
 
 ## Usage
-```
+
+##### New instance
+```javascript
   var ValidateArgs = require('validate-arg-types');
+
+  var validator = ValidateArgs('MyMethod');
   
-  var validator = ValidateArgs('identifier');
+```
   
+##### To Throw or not to Throw
+Fail fast?, in which case call throwThem first. All tests will throw at the first opportunity.
+
+```javascript
+
   validator.throwThem().isString('isAString');
   
-  validator.throwThem(false).isString('isAString').log();
+```
+
+or fail last and once.
+
+```javascript
+
+  validator.throwThem(false).isString('isAString').throw();
+  
+```
+
+you may want to log all errors detected.
+```javascript
+
+  validator.throwThem(false).isString('isAString').log().throw();
   
   validator.isString('isAString').log().throw();
   
+```  
   
-  validator.throwThem()
-    .isString('a-string-value')
-    .isNumber('a-number',1234)
-    .isArray('a-array',[]);
+##### Basic tests
+```javascript
+  
+  validator.throwThem().isString('isAString');
+  validator.throwThem().isArray([]);
+  validator.throwThem().isObject({});
+  validator.throwThem().isNumber(1234);
+  validator.throwThem().isFunction(function(){});
+  
+```  
+  
+##### Advanced tests.
+
+```javascript
+  
+  validator.throwThem().isObject({name:'firstname'}).has('name');
+  
+  
 ```
 
 
@@ -36,6 +73,9 @@ I'm no javascript expert, writing this was in part a foray into writing an npm m
 ## Thanks to 
 https://quickleft.com/blog/creating-and-publishing-a-node-js-module/
 
+## Pondering
+
+For the purpose of experimentation, how to re-factor to add in <,>,= tests on properties.
 
 ## Release History
 
