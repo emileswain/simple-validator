@@ -1,6 +1,6 @@
 {
   "name": "validate-arg-types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Validate types and values of properties. Throws or logs errors.",
   "main": "index.js",
   "scripts": {
