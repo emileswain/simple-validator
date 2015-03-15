@@ -31,128 +31,132 @@
  * @constructor
  */
 
-var DEBUG = false;
-function Validate(_name){
-    var name = _name || 'no name specified';
-    !DEBUG ? null: console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VALIDATE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    !DEBUG ? null: console.log("| Validating - "+name);
-    var failed = false;
-    var errors = [];
-    var throwErrors = false;
-    var logErrors = false;
-    var mapArgs = function ()
-    {
-        // value
-        // name, value
-        var map = {
-            name:'param',
-            value:'null',
-            type:'null'
-        }
-        if(arguments.length == 1)
+(function() {
+    'use strict';
+    var DEBUG = false;
+    function Validator(_name){
+        var name = _name || 'no name specified';
+        !DEBUG ? null: console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VALIDATE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        !DEBUG ? null: console.log("| Validating - "+name);
+        var failed = false;
+        var errors = [];
+        var throwErrors = false;
+        var logErrors = false;
+        var mapArgs = function ()
         {
-            map.value = arguments[0];
-
-        }else{
-            map.name = arguments[0];
-            map.value = arguments[1]
-        }
-
-        return map;
-    }
-    var createError = function (d)
-    {
-        return new Error("Value of '"+ d.name +"' is not a "+ d.type + ". value == '"+ d.value+"'");
-    }
-    var standardTest = function (d)
-    {
-        if (typeof d.value != d.type) {
-            failed = true;
-            processError(createError(d));
-        }
-    }
-    var processError = function (error)
-    {
-        errors.push(error);
-        if(logErrors)
-        {
-            console.log("ValidateArgs('"+name+"'), " +error.message);
-        }
-        if(throwErrors == true)
-        {
-            throw error;
-        }
-    }
-    var me = {
-        logThem:function(allow)
-        {
-            if(allow == false)
-            {
-                logErrors = false;
-            }else{
-                logErrors = true;
+            // value
+            // name, value
+            var map = {
+                name:'param',
+                value:'null',
+                type:'null'
             }
-            return me;
-        },
-        throwThem:function(allow)
-        {
-            if(allow == false)
+            if(arguments.length == 1)
             {
-                throwErrors = false;
+                map.value = arguments[0];
+
             }else{
-                throwErrors = true;
+                map.name = arguments[0];
+                map.value = arguments[1]
             }
-            return me;
-        },
-        isString:function () {
-            var d = mapArgs.apply(null,arguments);
-            d.type = 'string';
-            standardTest(d);
-            return me;
-        },
-        isNumber:function () {
-            var d = mapArgs.apply(null,arguments);
-            d.type = 'number';
-            standardTest(d);
-            return me;
-        },
-        isBoolean:function () {
-            var d = mapArgs.apply(null,arguments);
-            d.type = 'boolean';
-            standardTest(d);
-            return me;
-        },
-        isArray:function () {
-            var d = mapArgs.apply(null,arguments);
-            if ( !Array.isArray(d.value)) {
+
+            return map;
+        }
+        var createError = function (d)
+        {
+            return new Error("Value of '"+ d.name +"' is not a "+ d.type + ". value == '"+ d.value+"'");
+        }
+        var standardTest = function (d)
+        {
+            if (typeof d.value != d.type) {
                 failed = true;
                 processError(createError(d));
             }
-            return me;
-        },
-        throw:function ()
-        {
-            if(failed)
-            {
-                throw new Error('Method parameters(arguments) failed to validate.');
-            }
-        },
-        log:function ()
-        {
-            console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~ Log Error ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log("| ValidateArgs('"+name+"') ");
-            console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log("|");
-            for (var i=0; i<errors.length; i++)
-            {
-                console.log('|   ' + errors[i].message);
-            }
-            console.log("|");
-            console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~  END  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            return me;
         }
-    }
-    return me;
-};
+        var processError = function (error)
+        {
+            errors.push(error);
+            if(logErrors)
+            {
+                console.log("ValidateArgs('"+name+"'), " +error.message);
+            }
+            if(throwErrors == true)
+            {
+                throw error;
+            }
+        }
+        var me = {
+            logThem:function(allow)
+            {
+                if(allow == false)
+                {
+                    logErrors = false;
+                }else{
+                    logErrors = true;
+                }
+                return me;
+            },
+            throwThem:function(allow)
+            {
+                if(allow == false)
+                {
+                    throwErrors = false;
+                }else{
+                    throwErrors = true;
+                }
+                return me;
+            },
+            isString:function () {
+                var d = mapArgs.apply(null,arguments);
+                d.type = 'string';
+                standardTest(d);
+                return me;
+            },
+            isNumber:function () {
+                var d = mapArgs.apply(null,arguments);
+                d.type = 'number';
+                standardTest(d);
+                return me;
+            },
+            isBoolean:function () {
+                var d = mapArgs.apply(null,arguments);
+                d.type = 'boolean';
+                standardTest(d);
+                return me;
+            },
+            isArray:function () {
+                var d = mapArgs.apply(null,arguments);
+                if ( !Array.isArray(d.value)) {
+                    failed = true;
+                    processError(createError(d));
+                }
+                return me;
+            },
+            throw:function ()
+            {
+                if(failed)
+                {
+                    throw new Error('Method parameters(arguments) failed to validate.');
+                }
+            },
+            log:function ()
+            {
+                console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~ Log Error ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                console.log("| ValidateArgs('"+name+"') ");
+                console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                console.log("|");
+                for (var i=0; i<errors.length; i++)
+                {
+                    console.log('|   ' + errors[i].message);
+                }
+                console.log("|");
+                console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~  END  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                return me;
+            }
+        }
+        return me;
+    };
 
-module.exports = Validate;
+    module.exports = Validator;
+
+})();
