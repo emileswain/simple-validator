@@ -76,7 +76,7 @@ function Validate(_name){
         errors.push(error);
         if(logErrors)
         {
-            console.log("| - " +error.message);
+            console.log("ValidateArgs('"+name+"'), " +error.message);
         }
         if(throwErrors == true)
         {
@@ -139,7 +139,9 @@ function Validate(_name){
         },
         log:function ()
         {
-            console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~ Error Log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~ Log Error ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            console.log("| ValidateArgs('"+name+"') ");
+            console.log("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             console.log("|");
             for (var i=0; i<errors.length; i++)
             {
