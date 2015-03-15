@@ -1,5 +1,5 @@
 {
-  "name": "simple-validator",
+  "name": "validate-arg-types",
   "version": "0.1.0",
   "description": "Simple utlity to valid parameters. Configure to log or throw errors.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/emileswain/simple-validator.git"
+    "url": "https://github.com/emileswain/validate-arg-types.git"
 
   },
   "keywords": [
@@ -20,13 +20,13 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/emileswain/simple-validator/blob/master/LICENSE-MIT"
+      "url": "https://github.com/emileswain/validate-arg-types/blob/master/LICENSE-MIT"
     }
   ],
   "bugs": {
-    "url": "https://github.com/emileswain/simple-validator/issues"
+    "url": "https://github.com/emileswain/validate-arg-types/issues"
   },
-  "homepage": "https://github.com/emileswain/simple-validator",
+  "homepage": "https://github.com/emileswain/validate-arg-types",
   "devDependencies": {
     "mocha": "^2.2.1",
     "chai": "^2.1.1"
