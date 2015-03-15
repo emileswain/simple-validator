@@ -42,6 +42,7 @@
         var errors = [];
         var throwErrors = false;
         var logErrors = false;
+        var lastTest = null;
         var mapArgs = function ()
         {
             // value
@@ -72,6 +73,7 @@
                 failed = true;
                 processError(createError(d));
             }
+            lastTest = d;
         }
         var processError = function (error)
         {
@@ -135,6 +137,7 @@
                 d.type = 'array';
                 if ( !Array.isArray(d.value)) {
                     failed = true;
+                    lastTest = d;
                     processError(createError(d));
                 }
                 return me;
@@ -143,6 +146,26 @@
                 var d = mapArgs.apply(null,arguments);
                 d.type = 'function';
                 standardTest(d);
+                return me;
+            },
+            has:function ()
+            {
+                var d = mapArgs.apply(null,arguments);
+                d.type = 'has';
+                // if value of object has.
+                if(lastTest && lastTest.hasOwnProperty('type') && lastTest.type == 'object')
+                {
+
+                    if(!lastTest.value.hasOwnProperty(d.value))
+                    {
+                        failed = true;
+                        processError(new Error("Object '"+ JSON.stringify(lastTest.value) +"' does not have property '"+ d.value+"'"));
+                    }
+                }else{
+                    failed = true;
+                    processError(createError(d));
+                }
+                lastTest = d;
                 return me;
             },
 

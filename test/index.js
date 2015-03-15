@@ -120,7 +120,6 @@ describe('#Validate.isObject()', function ()
         done();
     });
 
-    // Number
     it('isObject({}) should not throw', function() {
         expect(function(){
             validate.throwThem().isObject({});
@@ -142,6 +141,18 @@ describe('#Validate.isObject()', function ()
         expect(function(){
             validate.throwThem().isObject('identifier',"ABC");
         }).throw('Value of \'identifier\' is not a object. value == \'ABC\'');
+    });
+
+    it('isObject({name:""}).has("name") should not throw', function() {
+        expect(function(){
+            validate.throwThem().isObject({name:'emile'}).has('name');
+        }).not.throw(/Another Error thrown/);
+    });
+
+    it('isObject({}).has("name") should throw', function() {
+        expect(function(){
+            validate.throwThem().isObject({}).has('name');
+        }).throw('Object \'{}\' does not have property \'name\'');
     });
 
 });
