@@ -111,7 +111,11 @@
             isString:function () {
                 var d = mapArgs.apply(null,arguments);
                 d.type = 'string';
-                standardTest(d);
+                if ( (typeof d.value != d.type) || d.value instanceof String) {
+                    failed = true;
+                    lastTest = d;
+                    processError(createError(d));
+                }
                 return me;
             },
             isNumber:function () {

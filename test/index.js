@@ -19,6 +19,11 @@ describe('#Validate.isString()', function ()
             validate.throwThem().isString('isAString');
         }).not.throw(/Another Error thrown/);
     });
+    it('isString(new String("ABC")) should not throw', function() {
+        expect(function(){
+            validate.throwThem().isString(new String("ABC"));
+        }).not.throw(/Another Error thrown/);
+    });
     it('isString(123) should throw', function() {
         expect(function(){
             validate.throwThem().isString(1234);
